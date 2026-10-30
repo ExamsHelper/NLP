@@ -1,0 +1,61 @@
+WEEK-8
+====================
+
+PROGRAM: 8.a) collocation_extraction
+====================================
+
+CODE:
+'''8.a) collocation_extraction'''
+
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.collocations import BigramCollocationFinder, TrigramCollocationFinder
+
+text = "break the rules and enjoy free time. Break the rules and enjoy free time."
+words = word_tokenize(text.lower())
+words = [w for w in words if w.isalpha() and w not in stopwords.words('english')]
+
+bigram = BigramCollocationFinder.from_words(words)
+trigram = TrigramCollocationFinder.from_words(words)
+
+print(bigram.nbest(nltk.collocations.BigramAssocMeasures().pmi, 5))
+print(trigram.nbest(nltk.collocations.TrigramAssocMeasures().pmi, 5))
+
+OUTPUT:
+[('break', 'rules'), ('enjoy', 'free'), ('free', 'time'), ('rules', 'enjoy'), ('time', 'break')]
+[('break', 'rules', 'enjoy'), ('enjoy', 'free', 'time'), ('rules', 'enjoy', 'free'), ('free', 'time', 'break'), ('time', 'break', 'rules')]
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+
+------------------------------------------------------------------------
+
+PROGRAM: 8.b) marriage_relationship
+===================================
+
+CODE:
+'''8.b) marriage_relationship'''
+
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+text = "Mark and Emily married yesterday."
+doc = nlp(text)
+
+people = [ent.text for ent in doc.ents if ent.label_ == "PERSON"]
+
+if len(people) >= 2 and "married" in text:
+    print(people[0], "is spouse of", people[1])
+
+OUTPUT:
+Mark is spouse of Emily
+
+------------------------------------------------------------------------

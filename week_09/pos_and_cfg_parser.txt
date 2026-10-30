@@ -1,0 +1,46 @@
+WEEK-9
+====================
+
+PROGRAM: 9) pos and cfg parser
+==============================
+
+CODE:
+'''9) pos and cfg parser'''
+
+import nltk
+from nltk import CFG
+from nltk.parse import ChartParser
+from nltk.corpus import wordnet as wn
+
+nltk.download('wordnet')
+
+sentence = input("Enter sentence: ").lower().split()
+print("WordNet:", wn.synsets(sentence[1]))
+
+grammar = CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the' | 'a'
+N -> 'dog' | 'cat'
+V -> 'chases' | 'likes'
+""")
+
+for tree in ChartParser(grammar).parse(sentence):
+    tree.pretty_print()
+
+OUTPUT:
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+Enter sentence: the cat likes a dog
+WordNet: [Synset('cat.n.01'), Synset('guy.n.01'), Synset('cat.n.03'), Synset('kat.n.01'), Synset('cat-o'-nine-tails.n.01'), Synset('caterpillar.n.02'), Synset('big_cat.n.01'), Synset('computerized_tomography.n.01'), Synset('cat.v.01'), Synset('vomit.v.01')]
+              S              
+      ________|____           
+     |             VP        
+     |         ____|___       
+     NP       |        NP    
+  ___|___     |     ___|___   
+Det      N    V   Det      N 
+ |       |    |    |       |  
+the     cat likes  a      dog
+
+------------------------------------------------------------------------

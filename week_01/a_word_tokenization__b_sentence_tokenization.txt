@@ -1,0 +1,50 @@
+WEEK-1
+====================
+
+PROGRAM: 1.a) word_tokenization
+===============================
+
+CODE:
+'''1.a) word_tokenization'''
+
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
+
+from nltk.tokenize import word_tokenize
+
+text = "Hello everyone. Welcome to NLP class."
+print(word_tokenize(text))
+
+OUTPUT:
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+['Hello', 'everyone', '.', 'Welcome', 'to', 'NLP', 'class', '.']
+
+------------------------------------------------------------------------
+
+PROGRAM: 1.b) sentence_tokenization
+===================================
+
+CODE:
+'''1.b) sentence_tokenization'''
+
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
+
+from nltk.tokenize import sent_tokenize
+
+text = "Hello everyone. Welcome to class. Learn NLP."
+print(sent_tokenize(text))
+
+OUTPUT:
+['Hello everyone.', 'Welcome to class.', 'Learn NLP.']
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+
+------------------------------------------------------------------------

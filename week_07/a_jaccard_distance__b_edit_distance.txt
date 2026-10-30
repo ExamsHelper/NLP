@@ -1,0 +1,44 @@
+WEEK-7
+====================
+
+PROGRAM: 7.a) jaccard_distance
+==============================
+
+CODE:
+'''7.a) jaccard_distance'''
+
+from nltk.metrics.distance import jaccard_distance
+from nltk.util import ngrams
+
+word1 = "good"
+word2 = "google"
+
+a = set(ngrams(word1, 2))
+b = set(ngrams(word2, 2))
+
+print(jaccard_distance(a, b))
+
+OUTPUT:
+0.6666666666666666
+
+------------------------------------------------------------------------
+
+PROGRAM: 7.b) edit_distance
+===========================
+
+CODE:
+'''7.b) edit_distance'''
+
+from nltk.metrics import edit_distance
+
+word1 = input("Enter first word: ")
+word2 = input("Enter second word: ")
+
+print(edit_distance(word1, word2))
+
+OUTPUT:
+Enter first word: bike
+Enter second word: bite
+1
+
+------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+WEEK-10
+====================
+
+PROGRAM: 10) bigram_trigram
+===========================
+
+CODE:
+'''10) bigram_trigram'''
+
+import nltk
+from nltk.util import bigrams, trigrams
+from nltk.tokenize import word_tokenize
+
+text = "I love learning natural language processing"
+words = word_tokenize(text)
+
+print("Bigrams:", list(bigrams(words)))
+print("Trigrams:", list(trigrams(words)))
+
+OUTPUT:
+Bigrams: [('I', 'love'), ('love', 'learning'), ('learning', 'natural'), ('natural', 'language'), ('language', 'processing')]
+Trigrams: [('I', 'love', 'learning'), ('love', 'learning', 'natural'), ('learning', 'natural', 'language'), ('natural', 'language', 'processing')]
+
+------------------------------------------------------------------------

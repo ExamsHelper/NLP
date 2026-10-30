@@ -1,0 +1,50 @@
+WEEK-4
+====================
+
+PROGRAM: 4.a) synonyms
+======================
+
+CODE:
+'''4.a) synonyms'''
+
+import nltk
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+
+words = set()
+for syn in wordnet.synsets("good"):
+    for lemma in syn.lemmas():
+        words.add(lemma.name())
+
+print(words)
+
+OUTPUT:
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+{'proficient', 'in_effect', 'skillful', 'adept', 'full', 'right', 'honorable', 'beneficial', 'salutary', 'secure', 'upright', 'well', 'estimable', 'goodness', 'practiced', 'commodity', 'thoroughly', 'trade_good', 'sound', 'unspoiled', 'soundly', 'unspoilt', 'dear', 'ripe', 'expert', 'effective', 'near', 'undecomposed', 'skilful', 'just', 'in_force', 'honest', 'respectable', 'dependable', 'good', 'safe', 'serious'}
+
+------------------------------------------------------------------------
+
+PROGRAM: 4.b) antonyms
+======================
+
+CODE:
+'''4.b) antonyms'''
+
+import nltk
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+
+words = set()
+for syn in wordnet.synsets("good"):
+    for lemma in syn.lemmas():
+        for ant in lemma.antonyms():
+            words.add(ant.name())
+
+print(words)
+
+OUTPUT:
+{'badness', 'ill', 'evilness', 'evil', 'bad'}
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+
+------------------------------------------------------------------------

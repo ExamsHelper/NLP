@@ -1,0 +1,56 @@
+WEEK-5
+====================
+
+PROGRAM: 5.a) stemming_lemmatization
+====================================
+
+CODE:
+'''5.a) stemming_lemmatization'''
+
+import nltk
+nltk.download('wordnet')
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+stemmer = PorterStemmer()
+lemma = WordNetLemmatizer()
+
+words = ["running", "flies", "leaves", "studying"]
+
+for word in words:
+    print(word, stemmer.stem(word), lemma.lemmatize(word))
+
+OUTPUT:
+running run running
+flies fli fly
+leaves leav leaf
+studying studi studying
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+
+------------------------------------------------------------------------
+
+PROGRAM: 5.b) lemmatization
+===========================
+
+CODE:
+'''5.b) lemmatization'''
+
+import nltk
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+
+lem = WordNetLemmatizer()
+words = ["running", "flies", "leaves", "studying"]
+
+for word in words:
+    print(word, ":", lem.lemmatize(word, pos='v'))
+
+OUTPUT:
+running : run
+flies : fly
+leaves : leave
+studying : study
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+
+------------------------------------------------------------------------

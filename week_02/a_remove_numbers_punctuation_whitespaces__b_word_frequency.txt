@@ -1,0 +1,54 @@
+WEEK-2
+====================
+
+PROGRAM: 2.a) remove_numbers_punctuation_whitespaces
+====================================================
+
+CODE:
+'''2.a) remove_numbers_punctuation_whitespaces'''
+
+with open("input.txt", "w") as f:
+    f.write("Hello World! 123 NLP Lab.")
+
+with open("input.txt", "r") as f:
+    text = f.read()
+
+cleaned = ''.join(c for c in text if c.isalpha())
+
+with open("output.txt", "w") as f:
+    f.write(cleaned)
+
+print(cleaned)
+
+OUTPUT:
+HelloWorldNLPLab
+
+------------------------------------------------------------------------
+
+PROGRAM: 2.b) word_frequency
+============================
+
+CODE:
+'''2.b) word_frequency'''
+
+import re
+from collections import Counter
+
+with open("test.txt", "w") as f:
+    f.write("Mango banana apple mango banana mango")
+
+with open("test.txt", "r") as f:
+    text = f.read().lower()
+
+words = re.findall(r'\w+', text)
+freq = Counter(words)
+
+for word, count in freq.most_common():
+    print(word, count)
+
+OUTPUT:
+mango 3
+banana 2
+apple 1
+
+------------------------------------------------------------------------
